@@ -1,1 +1,1 @@
-Tean Directory App by Earl Eugene Hernandez
+Team Directory App by Earl Eugene Hernandez
