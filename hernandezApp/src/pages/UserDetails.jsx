@@ -1,18 +1,28 @@
 import { Link, useParams } from 'react-router-dom'
-import { useState } from 'react'
-import Button from '../components/Button'
+import { useEffect, useState } from 'react'
 import { users } from '../data/users'
 
 function UserDetails() {
 	const { id } = useParams()
-	const [isArchived, setIsArchived] = useState(false)
-	const user = users.find((candidate) => String(candidate.id) === id)
+	const [user, setUser] = useState(null)
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			const matchingUser = users.find((candidate) => String(candidate.id) === id)
+			setUser(matchingUser ?? null)
+		}, 0)
+
+		return () => clearTimeout(timer)
+	}, [id])
+
+	useEffect(() => {
+		document.title = user?.name ?? 'User not found'
+	}, [user])
 
 	if (!user) {
 		return (
 			<section className="page empty-state">
-				<p className="eyebrow">User not found</p>
-				<h1>That profile does not exist.</h1>
+				<h1>User not found.</h1>
 				<Link className="text-link" to="/users">Back to all users</Link>
 			</section>
 		)
@@ -34,12 +44,6 @@ function UserDetails() {
 				<div><dt>Company</dt><dd>{user.company}</dd></div>
 				<div><dt>Role</dt><dd>{user.role}</dd></div>
 			</dl>
-			<div className="profile-action">
-				<Button label="Archive profile" variant="danger" onClick={() => setIsArchived(true)}>
-					<span aria-hidden="true">!</span>
-				</Button>
-				{isArchived && <p className="action-message">Profile marked for archiving.</p>}
-			</div>
 		</section>
 	)
 }

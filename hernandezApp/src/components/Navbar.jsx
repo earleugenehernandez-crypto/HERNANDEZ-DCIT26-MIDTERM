@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-function Navbar() {
+function Navbar({ favoriteCount, darkMode, onToggleTheme }) {
 	return (
 		<header className="navbar">
 			<NavLink className="brand" to="/">People Directory</NavLink>
@@ -8,6 +8,10 @@ function Navbar() {
 				<NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/">Home</NavLink>
 				<NavLink className="nav-link" to="/users">Users</NavLink>
 				<NavLink className="nav-link" to="/about">About</NavLink>
+				<span className="favorites-count">Favorites: {favoriteCount}</span>
+				<button className="theme-button" type="button" onClick={onToggleTheme}>
+					{darkMode ? 'Light mode' : 'Dark mode'}
+				</button>
 			</nav>
 		</header>
 	)

@@ -1,7 +1,7 @@
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Verdana, sans-serif;
   margin: 0;
 }
 

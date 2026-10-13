@@ -8,12 +8,18 @@
   --card: #ffffff;
 }
 
+.app-shell { background: var(--paper); color: var(--ink); min-height: 100vh; transition: background-color .2s, color .2s; }
+.app-shell.dark-mode { --ink: #f1eee7; --muted: #b8b8ae; --line: #41443e; --paper: #1c201d; --accent: #e8785d; --accent-dark: #ffad98; --card: #282d29; }
+
 .navbar { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; margin: 0 auto; max-width: 1126px; padding: 24px 40px; }
 .brand, .nav-link, .text-link { color: var(--ink); text-decoration: none; }
 .brand { font-size: 1.05rem; font-weight: 700; letter-spacing: .02em; }
 .navbar nav { display: flex; gap: 28px; }
 .nav-link { color: var(--muted); font-size: .9rem; }
 .nav-link:hover, .nav-link.active, .text-link:hover { color: var(--accent-dark); }
+.favorites-count { color: var(--accent-dark); font-size: .9rem; font-weight: 700; }
+.theme-button { background: transparent; border: 1px solid var(--line); color: var(--ink); cursor: pointer; font: inherit; font-size: .85rem; padding: 8px 10px; }
+.theme-button:hover { border-color: var(--accent); color: var(--accent-dark); }
 .app-content { min-height: calc(100vh - 77px); }
 .page { margin: 0 auto; max-width: 1046px; padding: 88px 40px; }
 .hero-page { padding-bottom: 130px; padding-top: 130px; }
@@ -24,6 +30,9 @@ h1 { color: var(--ink); font-size: clamp(2.7rem, 7vw, 5.9rem); letter-spacing: -
 .page-heading h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
 .intro { color: var(--muted); font-size: 1.12rem; line-height: 1.65; margin: 0 0 30px; max-width: 580px; }
 .status-message { color: var(--muted); font-size: 1.1rem; margin: 30px 0; }
+.search-field { color: var(--muted); display: grid; font-size: .78rem; font-weight: 700; gap: 8px; margin-bottom: 28px; max-width: 420px; }
+.search-field input { background: var(--card); border: 1px solid var(--line); color: var(--ink); font: inherit; padding: 12px 14px; }
+.search-field input:focus { border-color: var(--accent); outline: 2px solid #f0c4b8; outline-offset: 1px; }
 .button { border: 0; color: #fff; cursor: pointer; display: inline-flex; font: inherit; font-weight: 700; gap: 10px; padding: 14px 19px; }
 .button-primary { background: var(--accent); }
 .button-primary:hover { background: var(--accent-dark); }
