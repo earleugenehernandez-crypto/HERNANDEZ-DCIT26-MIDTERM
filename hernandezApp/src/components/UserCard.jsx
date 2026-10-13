@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom'
 
-function UserCard({ user }) {
+function UserCard({ id, name, email, company, isFavorite, onToggleFavorite }) {
 	return (
-		<Link className="user-card" to={`/users/${user.id}`}>
-			<span className="user-avatar">{user.name.charAt(0)}</span>
+		<article className="user-card">
+			<span className="user-avatar">{name.charAt(0)}</span>
 			<span className="user-card-copy">
-				<strong>{user.name}</strong>
-				<span>{user.role} at {user.company}</span>
+				<strong>{name}</strong>
+				<span>{email}</span>
+				<span>{company}</span>
 			</span>
-			<span className="user-card-arrow" aria-hidden="true">-&gt;</span>
-		</Link>
+			<button className="favorite-button" type="button" onClick={onToggleFavorite} aria-pressed={isFavorite}>
+				{isFavorite ? 'Favorited' : 'Favorite'}
+			</button>
+			<Link className="view-details" to={`/users/${id}`}>View Details</Link>
+		</article>
 	)
 }
 
